@@ -33,66 +33,66 @@ Libraries used:
     - Used to format console outputs
 
 ## Description of functions and program structure
-_int main()_
-    controls all the I/O and creates the HammingVectors
-    calls:
-        HammingVector(int)
-        vector<int> HammingVector.getData()
-        vector<int> HammingVector.getMessage()
-        vector<int> HammingVector.getEMessage()
-        void printVector(vector<int>)
-        HammingVector(vector<int>)
-        HammingVector.getParity()
+**_int main()_** \
+controls all the I/O and creates the HammingVectors \
+calls: \
+&emsp;HammingVector(int) \
+&emsp;vector<int> HammingVector.getData() \
+&emsp;vector<int> HammingVector.getMessage() \
+&emsp;vector<int> HammingVector.getEMessage() \
+&emsp;void printVector(vector<int>) \
+&emsp;HammingVector(vector<int>) \
+&emsp;HammingVector.getParity()
 
-_HammingVector(int)_
-    Returns a new instance of HammingVector. First, checks to make sure the number of data bits is large enough. Then, it calculates the number appropriate number of parity bits. Next, it randomly generates the data vector and builds the G, H, and R matrices. Finally, it uses matrix multiplication to calculate the message and parity of the HammingVector.
-    calls:
-        void HammingVector.buildG()
-        void HammingVector.buildH()
-        void HammingVector.buildR()
-        vector<int> HammingVector::matrixCrossVector(vector<vector<int>>, vector<int>)
+**_HammingVector(int)_** \
+Returns a new instance of HammingVector. First, checks to make sure the number of data bits is large enough. Then, it calculates the number appropriate number of parity bits. Next, it randomly generates the data vector and builds the G, H, and R matrices. Finally, it uses matrix multiplication to calculate the message and parity of the HammingVector. \
+calls: \
+&emsp;void HammingVector.buildG() \
+&emsp;void HammingVector.buildH() \
+&emsp;void HammingVector.buildR() \
+&emsp;vector<int> HammingVector::matrixCrossVector(vector<vector<int>>, vector<int>)
 
-_vector<int> HammingVector.getData()_
-    Returns the instance's data vector
+**_vector<int> HammingVector.getData()_** \
+Returns the instance's data vector
 
-_vector<int> HammingVector.getMessage()_
-    Returns the instance's message vector
+**_vector<int> HammingVector.getMessage()_** \
+Returns the instance's message vector
 
-_vector<int> HammingVector.getEMessage()_
-    First, creates a copy of the instance's message. If the instance's parity vector is a zero vector, then a random bit in the copy is flipped and the copy is returned. Else, a bit in the copy is flipped based on the instance's parity vector and the copy is returned.
+**_vector<int> HammingVector.getEMessage()_** \
+First, creates a copy of the instance's message. If the instance's parity vector is a zero vector, then a random bit in the copy is flipped and the copy is returned. Else, a bit in the copy is flipped based on the instance's parity vector and the copy is returned.
 
-_void printVector(vector<int>)_
-    Prints the given vector to the screen
+**_void printVector(vector<int>)_** \
+Prints the given vector to the screen
 
-_HammingVector(vector<int>)_
-    Returns a new instance of HammingVector. First, this function checks that the input vector is long enough. Then, given that the vector is indeed long enough, the number of data and parity bits is calculated based on the size of the vector. Then the G, H, and R, matrices are calculated. Then the parity vector is calculated and the message is corrected based on the parity vector. Finally, the data is derived from the corrected message.
-    calls:
-        void HammingVector.buildG()
-        void HammingVector.buildH()
-        void HammingVector.buildR()
-        vector<int> HammingVector::matrixCrossVector(vector<vector<int>>, vector<int>)
+**_HammingVector(vector<int>)_** \
+Returns a new instance of HammingVector. First, this function checks that the input vector is long enough. Then, given that the vector is indeed long enough, the number of data and parity bits is calculated based on the size of the vector. Then the G, H, and R, matrices are calculated. Then the parity vector is calculated and the message is corrected based on the parity vector. Finally, the data is derived from the corrected message. \
+calls: \
+&emsp;void HammingVector.buildG() \
+&emsp;void HammingVector.buildH() \
+&emsp;void HammingVector.buildR() \
+&emsp;vector<int> HammingVector::matrixCrossVector(vector<vector<int>>, vector<int>)
 
-_vector<int> HammingVector.getParity()_
-    Returns the instance's parity vector
+**_vector<int> HammingVector.getParity()_** \
+Returns the instance's parity vector
 
-_void HammingVector.buildG()_
-    Builds the instance's G matrix (encoding matrix) with a size of totalBits x dataBits.
-    calls:
-        bool HammingVector::isPowerOfTwo(int)
+**_void HammingVector.buildG()_** \
+Builds the instance's G matrix (encoding matrix) with a size of totalBits x dataBits. \
+calls: \
+&emsp;bool HammingVector::isPowerOfTwo(int)
 
-_void HammingVector.buildH()_
-    Builds the instance's H matrix (check matrix) with a size of parityBits x totalBits.
+**_void HammingVector.buildH()_** \
+Builds the instance's H matrix (check matrix) with a size of parityBits x totalBits.
 
-_void HammingVector.buildR()_
-    Builds the instance's R matrix (decoding matrix) with a size of dataBits x totalBits.
-    calls:
-        bool HammingVector::isPowerOfTwo(int)
+**_void HammingVector.buildR()_** \
+Builds the instance's R matrix (decoding matrix) with a size of dataBits x totalBits. \
+calls: \
+&emsp;bool HammingVector::isPowerOfTwo(int)
 
-_vector<int> HammingVector::matrixCrossVector(vector<vector<int>>, vector<int>)_
-    Takes in a matrix of size m x n and vector of size n x 1. Returns a vector of size m x 1. Used to calculate the data, message, and parity vectors.
+**_vector<int> HammingVector::matrixCrossVector(vector<vector<int>>, vector<int>)_** \
+Takes in a matrix of size m x n and vector of size n x 1. Returns a vector of size m x 1. Used to calculate the data, message, and parity vectors.
 
-_bool HammingVector::isPowerOfTwo(int)_
-    Returns a boolean indicating whether or not the input is a power of two
+**_bool HammingVector::isPowerOfTwo(int)_** \
+Returns a boolean indicating whether or not the input is a power of two
 
 ## Description of testing and verification process
 The only part of the program susceptible to error is user input. The expected behavior on invalid input is to print the thrown exception then reprint the input prompt.
@@ -100,8 +100,7 @@ These input scenarios were tested:
 
 - input <1 resulted in expected behavior
 - input as NAN resulted in expected behavior
-- input as float resulted in the float getting rounded down and automatically cast to an integer and
-    the program ran without exception
+- input as float resulted in the float getting rounded down and automatically cast to an integer and the program ran without exception
 
 ## How run it
 There are two ways to run this program. Both assume that you have extracted the zip file into an empty folder and are currently in said folder.
@@ -111,7 +110,6 @@ There are two ways to run this program. Both assume that you have extracted the 
 3. Use the program as described in the project description
 
 If unable to to do that for any reason, you may try the following instead.
-1. Open the Visual Studio solution in Visual Studio 2019 (other versions might work, but I make no
-guarantees)
+1. Open the Visual Studio solution in Visual Studio 2019 (other versions might work, but I make no guarantees)
 2. In Visual Studio, click on Debug > Start Without Debugging
 3. Use the program as described in the project description
